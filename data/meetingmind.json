@@ -1,0 +1,897 @@
+{
+  "users": [
+    {
+      "id": "usr-sarah-chen",
+      "name": "Sarah Chen",
+      "email": "sarah.chen@acme.io",
+      "passwordHash": "79589c4515977a45631d7675a5df5d18:8cce3947d938ed1c8578e4e5efda7c6925bc7073ec6086c3f59bd927061ad38f4f535e172c8e923eb16a1c7cfa7a0d94a6c64ca2ff457283453fda15cf54e4e8",
+      "role": "owner",
+      "avatarUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80",
+      "createdAt": "2026-10-01T15:54:53.922Z",
+      "updatedAt": "2026-10-01T15:54:53.922Z",
+      "accountStatus": "active"
+    },
+    {
+      "id": "usr-alex-rivera",
+      "name": "Alex Rivera",
+      "email": "alex.rivera@acme.io",
+      "passwordHash": "79589c4515977a45631d7675a5df5d18:8cce3947d938ed1c8578e4e5efda7c6925bc7073ec6086c3f59bd927061ad38f4f535e172c8e923eb16a1c7cfa7a0d94a6c64ca2ff457283453fda15cf54e4e8",
+      "role": "admin",
+      "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+      "createdAt": "2026-10-01T15:54:53.922Z",
+      "updatedAt": "2026-10-01T15:54:53.922Z",
+      "accountStatus": "active"
+    }
+  ],
+  "workspaces": [
+    {
+      "id": "ws-acme-cloud",
+      "name": "Acme Cloud Platform",
+      "timezone": "America/Los_Angeles",
+      "settings": {
+        "defaultDestination": "jira",
+        "autoExecuteApproved": true,
+        "requireTwoPersonApproval": false,
+        "slackNotificationsEnabled": true,
+        "emailNotificationsEnabled": true,
+        "aiProvider": "gemini",
+        "modelName": "gemini-3.8-flash"
+      },
+      "createdAt": "2026-10-01T15:54:53.922Z"
+    }
+  ],
+  "workspaceMembers": [
+    {
+      "id": "mem-sarah-chen",
+      "workspaceId": "ws-acme-cloud",
+      "userId": "usr-sarah-chen",
+      "displayName": "Sarah Chen",
+      "email": "sarah.chen@acme.io",
+      "role": "owner",
+      "aliases": [
+        "Sarah",
+        "Sarah C.",
+        "schen"
+      ],
+      "activeStatus": "active",
+      "notificationPreferences": {
+        "emailOnAssignment": true,
+        "emailOnSummary": true,
+        "slackNotifications": true
+      },
+      "joinedAt": "2026-10-01T15:54:53.922Z"
+    },
+    {
+      "id": "mem-alex-rivera",
+      "workspaceId": "ws-acme-cloud",
+      "userId": "usr-alex-rivera",
+      "displayName": "Alex Rivera",
+      "email": "alex.rivera@acme.io",
+      "role": "admin",
+      "aliases": [
+        "Alex",
+        "Alex R.",
+        "arivera"
+      ],
+      "activeStatus": "active",
+      "notificationPreferences": {
+        "emailOnAssignment": true,
+        "emailOnSummary": true,
+        "slackNotifications": true
+      },
+      "joinedAt": "2026-10-01T15:54:53.922Z"
+    },
+    {
+      "id": "mem-priya-patel",
+      "workspaceId": "ws-acme-cloud",
+      "userId": "usr-priya-patel",
+      "displayName": "Priya Patel",
+      "email": "priya.patel@acme.io",
+      "role": "member",
+      "aliases": [
+        "Priya",
+        "Priya P.",
+        "ppatel"
+      ],
+      "activeStatus": "active",
+      "notificationPreferences": {
+        "emailOnAssignment": true,
+        "emailOnSummary": true,
+        "slackNotifications": true
+      },
+      "joinedAt": "2026-10-01T15:54:53.922Z"
+    },
+    {
+      "id": "mem-marcus-vance",
+      "workspaceId": "ws-acme-cloud",
+      "userId": "usr-marcus-vance",
+      "displayName": "Marcus Vance",
+      "email": "marcus.vance@acme.io",
+      "role": "member",
+      "aliases": [
+        "Marcus",
+        "mvance",
+        "Marc"
+      ],
+      "activeStatus": "active",
+      "notificationPreferences": {
+        "emailOnAssignment": true,
+        "emailOnSummary": false,
+        "slackNotifications": true
+      },
+      "joinedAt": "2026-10-01T15:54:53.922Z"
+    },
+    {
+      "id": "mem-elena-rostova",
+      "workspaceId": "ws-acme-cloud",
+      "userId": "usr-elena-rostova",
+      "displayName": "Elena Rostova",
+      "email": "elena.rostova@acme.io",
+      "role": "member",
+      "aliases": [
+        "Elena",
+        "erostova"
+      ],
+      "activeStatus": "active",
+      "notificationPreferences": {
+        "emailOnAssignment": true,
+        "emailOnSummary": false,
+        "slackNotifications": false
+      },
+      "joinedAt": "2026-10-01T15:54:53.922Z"
+    }
+  ],
+  "meetings": [
+    {
+      "id": "mtg-sprint-42-sync",
+      "workspaceId": "ws-acme-cloud",
+      "createdBy": "usr-sarah-chen",
+      "title": "Sprint 42 Architecture & Cloud Migration Sync",
+      "meetingDate": "2026-10-05",
+      "timezone": "America/Los_Angeles",
+      "sourceType": "sample",
+      "transcriptText": "[00:00:02] Sarah Chen: Good morning everyone. Let's dive straight into the Sprint 42 architecture sync. The primary agenda is finalizing the Postgres 16 cutover plan and resolving the auth token deprecation.\n[00:00:25] Alex Rivera: Thanks Sarah. On the database migration: we completed the shadow traffic test on staging. Replica lag peaked at 42ms during peak write load, which is well within our 100ms SLO.\n[00:01:05] Marcus Vance: Wait, what happens if the network partition between us-east and us-west triggers during the sync window? Have we tested active split-brain failover?\n[00:01:30] Alex Rivera: That's a valid catch. I will conduct a synthetic failover drill in staging by this Thursday, October 8th, and document the recovery runbook.\n[00:01:55] Sarah Chen: Perfect. Decision confirmed: we will proceed with the production database cutover during the maintenance window on Saturday, October 10th at 02:00 UTC.\n[00:02:20] Priya Patel: Does customer support know about the scheduled 15-minute maintenance window?\n[00:02:35] Sarah Chen: Not yet. Priya, can you coordinate with the customer support team and publish the maintenance notice by Friday, October 9th at 5 PM?\n[00:02:50] Priya Patel: Absolutely, I'll draft the customer advisory and share it in #announcements.\n[00:03:10] Alex Rivera: On the authentication side: the legacy HMAC tokens are expiring on November 1st. We must migrate all internal microservices to Ed25519 asymmetric keys.\n[00:03:40] Marcus Vance: Is the billing microservice ready for Ed25519 verification?\n[00:03:55] Alex Rivera: Actually, that's currently a blocker. The billing service is still pinned to Node 16 which lacks the native crypto primitives. Someone on the payments squad needs to bump the runtime.\n[00:04:20] Sarah Chen: Let's log this as a critical blocker. Marcus, can you sync with Dave on the payments team today to identify the upgrade blockers?\n[00:04:40] Marcus Vance: Will do. I'll get an estimate from Dave by tomorrow afternoon.\n[00:05:00] Elena Rostova: From QA: we noticed some flake in the end-to-end Cypress test suite for the checkout flow. Should we block the release if they fail?\n[00:05:25] Sarah Chen: No, we won't block deployment on flaky non-critical tests, but Elena, please quarantine the three flaky tests and log Jira bugs for each by Wednesday, October 7th.\n[00:05:48] Elena Rostova: Understood, I'll isolate them right after this call.\n[00:06:05] Sarah Chen: Great. One open question remaining: who is owning the SOC2 audit log archival policy? We talked about S3 Glacier vs GCP Coldline. Let's table that for next Monday's security sync.\n[00:06:30] Alex Rivera: Sounds good. We're all aligned. Thanks all!",
+      "transcriptHash": "d03eb405616e8fcaebc81db2cbeecee814048563578899c8a9b554388a4dcdd7",
+      "processingStatus": "needs_review",
+      "createdAt": "2026-10-01T13:54:53.938Z",
+      "updatedAt": "2026-10-01T13:54:53.938Z"
+    }
+  ],
+  "meetingAnalyses": [
+    {
+      "id": "anl-sprint-42",
+      "meetingId": "mtg-sprint-42-sync",
+      "version": 1,
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "promptVersion": "v1.4.0-structured",
+      "summary": {
+        "executiveSummary": "Engineering alignment on Sprint 42 cloud migration. The Postgres 16 cutover was approved for October 10th at 02:00 UTC with replica lag verified at 42ms. Ed25519 asymmetric auth migration faces a dependency blocker in the billing service. Synthetic failover testing and customer maintenance advisories were assigned.",
+        "mainDiscussionPoints": [
+          "Postgres 16 shadow traffic testing passed with 42ms peak replica lag.",
+          "Cross-region network partition split-brain risk flagged by Marcus Vance.",
+          "Ed25519 auth token migration blocked on Node 16 upgrade in payments microservice.",
+          "Quarantining 3 flaky Cypress checkout tests to prevent pipeline false positives."
+        ],
+        "confirmedDecisionsCount": 1,
+        "actionItemsCount": 5,
+        "blockersCount": 1,
+        "upcomingDeadlines": [
+          "2026-10-07 (Elena - Flaky tests)",
+          "2026-10-08 (Alex - Failover drill)",
+          "2026-10-09 (Priya - Support notice)"
+        ],
+        "suggestedFollowUpAgenda": [
+          "Review synthetic failover drill results and updated runbook",
+          "Payments squad Node runtime upgrade timeline",
+          "S3 Glacier vs GCP Coldline SOC2 archival policy"
+        ]
+      },
+      "blockersAndRisks": [
+        {
+          "description": "Billing microservice is pinned to Node 16, lacking native Ed25519 crypto primitives required for token upgrade before Nov 1st.",
+          "affectedItem": "Ed25519 authentication migration",
+          "responsiblePerson": "Marcus Vance / Dave (Payments)",
+          "proposedNextStep": "Sync with payments squad lead to schedule runtime bump.",
+          "requiresEscalation": true
+        }
+      ],
+      "openQuestions": [
+        {
+          "question": "Who owns the SOC2 audit log archival policy between S3 Glacier and GCP Coldline?",
+          "context": "Tabled until next Monday security sync.",
+          "personResponsible": "Unassigned"
+        }
+      ],
+      "structuredOutput": {},
+      "validationStatus": "valid",
+      "validationWarnings": [],
+      "processingDurationMs": 1420,
+      "createdAt": "2026-10-01T13:54:53.938Z"
+    }
+  ],
+  "meetingDecisions": [
+    {
+      "id": "dec-1",
+      "meetingId": "mtg-sprint-42-sync",
+      "analysisVersion": 1,
+      "statement": "Proceed with production database cutover during the maintenance window on Saturday, October 10th at 02:00 UTC.",
+      "context": "Shadow traffic test on staging verified replica lag peaked at 42ms, within 100ms SLO.",
+      "evidence": {
+        "quote": "Sarah Chen: Decision confirmed: we will proceed with the production database cutover during the maintenance window on Saturday, October 10th at 02:00 UTC.",
+        "speaker": "Sarah Chen",
+        "timestamp": "00:01:55"
+      },
+      "decisionStatus": "confirmed",
+      "confidence": "high",
+      "decisionMaker": "Sarah Chen",
+      "createdAt": "2026-10-01T13:54:53.938Z"
+    },
+    {
+      "id": "dec-2",
+      "meetingId": "mtg-sprint-42-sync",
+      "analysisVersion": 1,
+      "statement": "Do not block release on flaky non-critical Cypress checkout tests; isolate them instead.",
+      "context": "Cypress test suite had intermittent flake in staging.",
+      "evidence": {
+        "quote": "Sarah Chen: No, we won't block deployment on flaky non-critical tests, but Elena, please quarantine the three flaky tests and log Jira bugs for each by Wednesday, October 7th.",
+        "speaker": "Sarah Chen",
+        "timestamp": "00:05:25"
+      },
+      "decisionStatus": "confirmed",
+      "confidence": "high",
+      "decisionMaker": "Sarah Chen",
+      "createdAt": "2026-10-01T13:54:53.938Z"
+    }
+  ],
+  "actionItems": [
+    {
+      "id": "act-1",
+      "meetingId": "mtg-sprint-42-sync",
+      "analysisVersion": 1,
+      "title": "Conduct synthetic failover drill in staging and document recovery runbook",
+      "description": "Simulate cross-region us-east to us-west network partition to verify split-brain protection and measure automated failover recovery time.",
+      "ownerMemberId": "mem-alex-rivera",
+      "statedOwner": "Alex Rivera",
+      "ownerConfidence": "high",
+      "dueDate": "2026-10-08",
+      "deadlineBasis": "explicit",
+      "deadlineReasoning": "Explicitly stated \"by this Thursday, October 8th\".",
+      "priority": "high",
+      "status": "pending_review",
+      "evidence": {
+        "quote": "Alex Rivera: I will conduct a synthetic failover drill in staging by this Thursday, October 8th, and document the recovery runbook.",
+        "speaker": "Alex Rivera",
+        "timestamp": "00:01:30"
+      },
+      "confidence": "high",
+      "ambiguityFlags": [],
+      "clarificationQuestions": [],
+      "suggestedDestination": "jira",
+      "targetDestinations": [
+        "jira"
+      ],
+      "acceptanceCriteria": [
+        "Synthetic split-brain simulated in staging environment",
+        "Failover time measured and logged under 90s",
+        "Step-by-step recovery runbook committed to docs repo"
+      ],
+      "executionEligibility": true,
+      "createdAt": "2026-10-01T13:54:53.938Z",
+      "updatedAt": "2026-10-01T13:54:53.938Z"
+    },
+    {
+      "id": "act-2",
+      "meetingId": "mtg-sprint-42-sync",
+      "analysisVersion": 1,
+      "title": "Publish customer support maintenance notice for October 10th cutover",
+      "description": "Coordinate with customer support and draft public notification for 15-minute scheduled database maintenance window.",
+      "ownerMemberId": "mem-priya-patel",
+      "statedOwner": "Priya Patel",
+      "ownerConfidence": "high",
+      "dueDate": "2026-10-09",
+      "deadlineBasis": "explicit",
+      "deadlineReasoning": "Explicitly requested \"by Friday, October 9th at 5 PM\".",
+      "priority": "high",
+      "status": "approved",
+      "evidence": {
+        "quote": "Sarah Chen: Priya, can you coordinate with the customer support team and publish the maintenance notice by Friday, October 9th at 5 PM?",
+        "speaker": "Sarah Chen / Priya Patel",
+        "timestamp": "00:02:35"
+      },
+      "confidence": "high",
+      "ambiguityFlags": [],
+      "clarificationQuestions": [],
+      "suggestedDestination": "notion",
+      "targetDestinations": [
+        "notion"
+      ],
+      "acceptanceCriteria": [
+        "Draft advisory approved by engineering lead",
+        "Shared in #announcements and customer help center"
+      ],
+      "executionEligibility": true,
+      "approvedVersion": 1,
+      "createdAt": "2026-10-01T13:54:53.938Z",
+      "updatedAt": "2026-10-01T14:24:53.938Z"
+    },
+    {
+      "id": "act-3",
+      "meetingId": "mtg-sprint-42-sync",
+      "analysisVersion": 1,
+      "title": "Identify Node 16 upgrade blockers with payments team for Ed25519 support",
+      "description": "Sync with Dave on payments squad to unblock billing service runtime upgrade before HMAC token expiration on Nov 1st.",
+      "ownerMemberId": "mem-marcus-vance",
+      "statedOwner": "Marcus Vance",
+      "ownerConfidence": "high",
+      "dueDate": "2026-10-06",
+      "deadlineBasis": "inferred",
+      "deadlineReasoning": "Stated \"sync today\" and \"estimate from Dave by tomorrow afternoon\".",
+      "priority": "high",
+      "status": "pending_review",
+      "evidence": {
+        "quote": "Sarah Chen: Marcus, can you sync with Dave on the payments team today to identify the upgrade blockers? Marcus Vance: Will do. I'll get an estimate from Dave by tomorrow afternoon.",
+        "speaker": "Sarah Chen & Marcus Vance",
+        "timestamp": "00:04:20"
+      },
+      "confidence": "high",
+      "ambiguityFlags": [],
+      "clarificationQuestions": [],
+      "suggestedDestination": "both",
+      "targetDestinations": [
+        "jira",
+        "notion"
+      ],
+      "acceptanceCriteria": [
+        "Detailed list of Node 16 deprecated dependencies compiled",
+        "Engineering timeline committed by payments team"
+      ],
+      "executionEligibility": true,
+      "createdAt": "2026-10-01T13:54:53.938Z",
+      "updatedAt": "2026-10-01T13:54:53.938Z"
+    },
+    {
+      "id": "act-4",
+      "meetingId": "mtg-sprint-42-sync",
+      "analysisVersion": 1,
+      "title": "Quarantine flaky Cypress checkout tests and create Jira bug reports",
+      "description": "Isolate 3 intermittent checkout test cases from mandatory PR blocking build and log tracking tickets.",
+      "ownerMemberId": "mem-elena-rostova",
+      "statedOwner": "Elena Rostova",
+      "ownerConfidence": "high",
+      "dueDate": "2026-10-07",
+      "deadlineBasis": "explicit",
+      "deadlineReasoning": "Explicit deadline stated \"by Wednesday, October 7th\".",
+      "priority": "medium",
+      "status": "pending_review",
+      "evidence": {
+        "quote": "Sarah Chen: Elena, please quarantine the three flaky tests and log Jira bugs for each by Wednesday, October 7th.",
+        "speaker": "Sarah Chen",
+        "timestamp": "00:05:25"
+      },
+      "confidence": "high",
+      "ambiguityFlags": [],
+      "clarificationQuestions": [],
+      "suggestedDestination": "jira",
+      "targetDestinations": [
+        "jira"
+      ],
+      "acceptanceCriteria": [
+        "PR merged tagging flaky tests with @quarantine tag",
+        "3 Jira tickets created linked to QA epic"
+      ],
+      "executionEligibility": true,
+      "createdAt": "2026-10-01T13:54:53.938Z",
+      "updatedAt": "2026-10-01T13:54:53.938Z"
+    },
+    {
+      "id": "act-5",
+      "meetingId": "mtg-sprint-42-sync",
+      "analysisVersion": 1,
+      "title": "Define SOC2 audit log archival retention policy (S3 Glacier vs GCP Coldline)",
+      "description": "Evaluate cost, retrieval time, and compliance requirements between AWS S3 Glacier and Google Cloud Storage Coldline.",
+      "ownerMemberId": null,
+      "statedOwner": "Unassigned",
+      "ownerConfidence": "low",
+      "dueDate": "2026-10-12",
+      "deadlineBasis": "inferred",
+      "deadlineReasoning": "Deferred to next Monday security sync.",
+      "priority": "low",
+      "status": "flagged_clarification",
+      "evidence": {
+        "quote": "Sarah Chen: One open question remaining: who is owning the SOC2 audit log archival policy? We talked about S3 Glacier vs GCP Coldline. Let's table that for next Monday's security sync.",
+        "speaker": "Sarah Chen",
+        "timestamp": "00:06:05"
+      },
+      "confidence": "medium",
+      "ambiguityFlags": [
+        "Missing clear task owner",
+        "Storage provider decision unresolved"
+      ],
+      "clarificationQuestions": [
+        "Which engineer will draft the storage cost & compliance comparison?",
+        "Is the target retention period 1 year or 7 years under SOC2 Type II?"
+      ],
+      "suggestedDestination": "notion",
+      "targetDestinations": [
+        "notion"
+      ],
+      "acceptanceCriteria": [
+        "Cost and retrieval SLA matrix completed"
+      ],
+      "executionEligibility": false,
+      "createdAt": "2026-10-01T13:54:53.938Z",
+      "updatedAt": "2026-10-01T13:54:53.938Z"
+    },
+    {
+      "id": "test-act-inval-1790870094306",
+      "meetingId": "mtg-sprint-42-sync",
+      "analysisVersion": 1,
+      "title": "Modified Title Post-Approval",
+      "description": "Original description",
+      "ownerMemberId": "mem-alex-rivera",
+      "dueDate": "2026-10-15",
+      "deadlineBasis": "explicit",
+      "priority": "high",
+      "status": "pending_review",
+      "evidence": {
+        "quote": "Quote"
+      },
+      "confidence": "high",
+      "ambiguityFlags": [],
+      "clarificationQuestions": [],
+      "suggestedDestination": "jira",
+      "targetDestinations": [
+        "jira"
+      ],
+      "acceptanceCriteria": [],
+      "executionEligibility": true,
+      "approvedVersion": null,
+      "createdAt": "2026-10-01T15:54:54.306Z",
+      "updatedAt": "2026-10-01T15:54:54.306Z"
+    },
+    {
+      "id": "test-act-idem-1790870094307",
+      "meetingId": "mtg-sprint-42-sync",
+      "analysisVersion": 1,
+      "title": "Idempotency Test Deliverable",
+      "description": "Verify no duplicate Jira or Notion issues created",
+      "ownerMemberId": "mem-sarah-chen",
+      "dueDate": "2026-10-20",
+      "deadlineBasis": "explicit",
+      "priority": "medium",
+      "status": "approved",
+      "evidence": {
+        "quote": "I will handle this"
+      },
+      "confidence": "high",
+      "ambiguityFlags": [],
+      "clarificationQuestions": [],
+      "suggestedDestination": "jira",
+      "targetDestinations": [
+        "jira"
+      ],
+      "acceptanceCriteria": [
+        "Pass test"
+      ],
+      "executionEligibility": true,
+      "approvedVersion": 1,
+      "createdAt": "2026-10-01T15:54:54.307Z",
+      "updatedAt": "2026-10-01T15:54:54.307Z"
+    },
+    {
+      "id": "test-act-dual-1790870094310",
+      "meetingId": "mtg-sprint-42-sync",
+      "analysisVersion": 1,
+      "title": "Dual Target Architecture Document",
+      "description": "Create issue in Jira and Notion page concurrently",
+      "ownerMemberId": "mem-priya-patel",
+      "dueDate": "2026-10-22",
+      "deadlineBasis": "explicit",
+      "priority": "high",
+      "status": "approved",
+      "evidence": {
+        "quote": "Priya will publish to both"
+      },
+      "confidence": "high",
+      "ambiguityFlags": [],
+      "clarificationQuestions": [],
+      "suggestedDestination": "both",
+      "targetDestinations": [
+        "jira",
+        "notion"
+      ],
+      "acceptanceCriteria": [
+        "Dual task verified"
+      ],
+      "executionEligibility": true,
+      "approvedVersion": 1,
+      "createdAt": "2026-10-01T15:54:54.310Z",
+      "updatedAt": "2026-10-01T15:54:54.310Z"
+    }
+  ],
+  "actionApprovals": [],
+  "integrationConnections": [
+    {
+      "id": "int-jira",
+      "workspaceId": "ws-acme-cloud",
+      "provider": "jira",
+      "configuration": {
+        "siteUrl": "https://acme-cloud.atlassian.net",
+        "projectKey": "PROJ",
+        "issueType": "Task",
+        "autoAssigneeMatch": true
+      },
+      "connectionStatus": "connected",
+      "lastVerifiedAt": "2026-10-01T15:54:53.922Z",
+      "isMockMode": true
+    },
+    {
+      "id": "int-notion",
+      "workspaceId": "ws-acme-cloud",
+      "provider": "notion",
+      "configuration": {
+        "databaseId": "7f9184ab204b4c73a628c68832e8b109",
+        "databaseName": "Engineering Sprint Backlog",
+        "titleProperty": "Name",
+        "statusProperty": "Status",
+        "assigneeProperty": "Assignee",
+        "priorityProperty": "Priority",
+        "dueDateProperty": "Due Date"
+      },
+      "connectionStatus": "connected",
+      "lastVerifiedAt": "2026-10-01T15:54:53.922Z",
+      "isMockMode": true
+    },
+    {
+      "id": "int-slack",
+      "workspaceId": "ws-acme-cloud",
+      "provider": "slack",
+      "configuration": {
+        "channelName": "#eng-actions",
+        "notifyOnApproval": true,
+        "notifyOnCompletion": true
+      },
+      "connectionStatus": "connected",
+      "lastVerifiedAt": "2026-10-01T15:54:53.922Z",
+      "isMockMode": true
+    },
+    {
+      "id": "int-email",
+      "workspaceId": "ws-acme-cloud",
+      "provider": "email",
+      "configuration": {
+        "fromEmail": "notifications@meetingmind.ai",
+        "replyTo": "sarah.chen@acme.io",
+        "dailySummaryEnabled": true
+      },
+      "connectionStatus": "connected",
+      "lastVerifiedAt": "2026-10-01T15:54:53.922Z",
+      "isMockMode": true
+    }
+  ],
+  "externalTasks": [
+    {
+      "id": "ext-notion-1",
+      "actionItemId": "act-2",
+      "workspaceId": "ws-acme-cloud",
+      "provider": "notion",
+      "externalId": "notion-page-99182a",
+      "externalKey": "NOTION-PAGE-99182",
+      "externalUrl": "https://notion.so/acme-workspace/99182a",
+      "externalStatus": "In Progress",
+      "idempotencyKey": "idem-act-2-notion-v1",
+      "lastSyncedAt": "2026-10-01T15:54:53.922Z",
+      "createdAt": "2026-10-01T14:54:53.938Z"
+    },
+    {
+      "id": "ext-jira-1790870094308",
+      "actionItemId": "test-act-idem-1790870094307",
+      "workspaceId": "ws-acme-cloud",
+      "provider": "jira",
+      "externalId": "jira-mock-223",
+      "externalKey": "PROJ-223",
+      "externalUrl": "https://acme-cloud.atlassian.net/browse/PROJ-223",
+      "externalStatus": "To Do",
+      "idempotencyKey": "exec-test-act-idem-1790870094307-jira-v1",
+      "lastSyncedAt": "2026-10-01T15:54:54.308Z",
+      "createdAt": "2026-10-01T15:54:54.308Z"
+    },
+    {
+      "id": "ext-jira-1790870094311",
+      "actionItemId": "test-act-dual-1790870094310",
+      "workspaceId": "ws-acme-cloud",
+      "provider": "jira",
+      "externalId": "jira-mock-414",
+      "externalKey": "PROJ-414",
+      "externalUrl": "https://acme-cloud.atlassian.net/browse/PROJ-414",
+      "externalStatus": "To Do",
+      "idempotencyKey": "exec-test-act-dual-1790870094310-jira-v1",
+      "lastSyncedAt": "2026-10-01T15:54:54.311Z",
+      "createdAt": "2026-10-01T15:54:54.311Z"
+    },
+    {
+      "id": "ext-notion-1790870094312",
+      "actionItemId": "test-act-dual-1790870094310",
+      "workspaceId": "ws-acme-cloud",
+      "provider": "notion",
+      "externalId": "notion-page-jpw4dihf",
+      "externalKey": "PAGE-W4DIHF",
+      "externalUrl": "https://notion.so/acme-workspace/jpw4dihf",
+      "externalStatus": "Not Started",
+      "idempotencyKey": "exec-test-act-dual-1790870094310-notion-v1",
+      "lastSyncedAt": "2026-10-01T15:54:54.312Z",
+      "createdAt": "2026-10-01T15:54:54.312Z"
+    }
+  ],
+  "executionRecords": [
+    {
+      "id": "exec-1",
+      "workspaceId": "ws-acme-cloud",
+      "actionItemId": "act-2",
+      "provider": "notion",
+      "executionStatus": "succeeded",
+      "idempotencyKey": "idem-act-2-notion-v1",
+      "attempts": 1,
+      "requestSummary": {
+        "title": "Publish customer support maintenance notice for October 10th cutover",
+        "databaseId": "7f9184ab204b4c73a628c68832e8b109",
+        "destination": "notion"
+      },
+      "responseSummary": {
+        "pageId": "notion-page-99182a",
+        "url": "https://notion.so/acme-workspace/99182a"
+      },
+      "startedAt": "2026-10-01T14:54:53.938Z",
+      "completedAt": "2026-10-01T14:54:54.358Z"
+    },
+    {
+      "id": "exec-1790870094307-ffl2",
+      "workspaceId": "ws-acme-cloud",
+      "actionItemId": "test-act-idem-1790870094307",
+      "provider": "jira",
+      "executionStatus": "succeeded",
+      "idempotencyKey": "exec-test-act-idem-1790870094307-jira-v1",
+      "attempts": 1,
+      "requestSummary": {
+        "title": "Idempotency Test Deliverable",
+        "description": "Verify no duplicate Jira or Notion issues created",
+        "dueDate": "2026-10-20",
+        "priority": "medium",
+        "provider": "jira"
+      },
+      "startedAt": "2026-10-01T15:54:54.307Z",
+      "responseSummary": {
+        "issueId": "jira-mock-223",
+        "issueKey": "PROJ-223",
+        "issueUrl": "https://acme-cloud.atlassian.net/browse/PROJ-223"
+      },
+      "completedAt": "2026-10-01T15:54:54.308Z"
+    },
+    {
+      "id": "exec-1790870094310-5luu",
+      "workspaceId": "ws-acme-cloud",
+      "actionItemId": "test-act-dual-1790870094310",
+      "provider": "jira",
+      "executionStatus": "succeeded",
+      "idempotencyKey": "exec-test-act-dual-1790870094310-jira-v1",
+      "attempts": 1,
+      "requestSummary": {
+        "title": "Dual Target Architecture Document",
+        "description": "Create issue in Jira and Notion page concurrently",
+        "dueDate": "2026-10-22",
+        "priority": "high",
+        "provider": "jira"
+      },
+      "startedAt": "2026-10-01T15:54:54.310Z",
+      "responseSummary": {
+        "issueId": "jira-mock-414",
+        "issueKey": "PROJ-414",
+        "issueUrl": "https://acme-cloud.atlassian.net/browse/PROJ-414"
+      },
+      "completedAt": "2026-10-01T15:54:54.311Z"
+    },
+    {
+      "id": "exec-1790870094311-bny8",
+      "workspaceId": "ws-acme-cloud",
+      "actionItemId": "test-act-dual-1790870094310",
+      "provider": "notion",
+      "executionStatus": "succeeded",
+      "idempotencyKey": "exec-test-act-dual-1790870094310-notion-v1",
+      "attempts": 1,
+      "requestSummary": {
+        "title": "Dual Target Architecture Document",
+        "description": "Create issue in Jira and Notion page concurrently",
+        "dueDate": "2026-10-22",
+        "priority": "high",
+        "provider": "notion"
+      },
+      "startedAt": "2026-10-01T15:54:54.311Z",
+      "responseSummary": {
+        "pageId": "notion-page-jpw4dihf",
+        "pageUrl": "https://notion.so/acme-workspace/jpw4dihf"
+      },
+      "completedAt": "2026-10-01T15:54:54.312Z"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "notif-1",
+      "workspaceId": "ws-acme-cloud",
+      "actionItemId": "act-2",
+      "meetingId": "mtg-sprint-42-sync",
+      "recipient": "priya.patel@acme.io",
+      "channel": "email",
+      "templateKey": "task_assigned",
+      "subject": "[Action Assigned] Publish customer support maintenance notice for October 10th cutover",
+      "deliveryStatus": "sent",
+      "providerMessageId": "msg-mailtrap-77291",
+      "idempotencyKey": "idem-notif-act-2-priya",
+      "sentAt": "2026-10-01T14:54:53.939Z"
+    },
+    {
+      "id": "notif-1790870094309-a8rdf",
+      "workspaceId": "ws-acme-cloud",
+      "actionItemId": "test-act-idem-1790870094307",
+      "meetingId": "mtg-sprint-42-sync",
+      "recipient": "sarah.chen@acme.io",
+      "channel": "email",
+      "templateKey": "task_assigned",
+      "subject": "[Action Assigned] Idempotency Test Deliverable",
+      "deliveryStatus": "sent",
+      "providerMessageId": "msg-1790870094309",
+      "idempotencyKey": "notif-assign-test-act-idem-1790870094307-sarah.chen@acme.io",
+      "sentAt": "2026-10-01T15:54:54.309Z"
+    },
+    {
+      "id": "notif-1790870094313-ft85z",
+      "workspaceId": "ws-acme-cloud",
+      "actionItemId": "test-act-dual-1790870094310",
+      "meetingId": "mtg-sprint-42-sync",
+      "recipient": "priya.patel@acme.io",
+      "channel": "email",
+      "templateKey": "task_assigned",
+      "subject": "[Action Assigned] Dual Target Architecture Document",
+      "deliveryStatus": "sent",
+      "providerMessageId": "msg-1790870094313",
+      "idempotencyKey": "notif-assign-test-act-dual-1790870094310-priya.patel@acme.io",
+      "sentAt": "2026-10-01T15:54:54.313Z"
+    }
+  ],
+  "auditLogs": [
+    {
+      "id": "aud-1",
+      "workspaceId": "ws-acme-cloud",
+      "actorId": "usr-sarah-chen",
+      "actorName": "Sarah Chen",
+      "action": "meeting.create",
+      "entityType": "meeting",
+      "entityId": "mtg-sprint-42-sync",
+      "safeMetadata": {
+        "title": "Sprint 42 Architecture & Cloud Migration Sync",
+        "sourceType": "sample"
+      },
+      "createdAt": "2026-10-01T13:54:53.938Z"
+    },
+    {
+      "id": "aud-2",
+      "workspaceId": "ws-acme-cloud",
+      "actorId": "system",
+      "actorName": "MeetingMind Analysis Engine",
+      "action": "analysis.completed",
+      "entityType": "analysis",
+      "entityId": "anl-sprint-42",
+      "safeMetadata": {
+        "durationMs": 1420,
+        "actionsFound": 5,
+        "decisionsFound": 2
+      },
+      "createdAt": "2026-10-01T13:54:53.939Z"
+    },
+    {
+      "id": "aud-3",
+      "workspaceId": "ws-acme-cloud",
+      "actorId": "usr-sarah-chen",
+      "actorName": "Sarah Chen",
+      "action": "action.approve",
+      "entityType": "action_item",
+      "entityId": "act-2",
+      "safeMetadata": {
+        "title": "Publish customer support maintenance notice"
+      },
+      "createdAt": "2026-10-01T14:24:53.939Z"
+    },
+    {
+      "id": "aud-4",
+      "workspaceId": "ws-acme-cloud",
+      "actorId": "system",
+      "actorName": "Execution Dispatcher",
+      "action": "integration.task_created",
+      "entityType": "external_task",
+      "entityId": "ext-notion-1",
+      "safeMetadata": {
+        "provider": "notion",
+        "key": "NOTION-PAGE-99182"
+      },
+      "createdAt": "2026-10-01T14:54:53.939Z"
+    },
+    {
+      "id": "aud-1790870094309-ohmuv",
+      "workspaceId": "ws-acme-cloud",
+      "actorId": "usr-sarah-chen",
+      "actorName": "Sarah Chen",
+      "action": "action.execute",
+      "entityType": "action_item",
+      "entityId": "test-act-idem-1790870094307",
+      "safeMetadata": {
+        "destinations": [
+          "jira"
+        ],
+        "success": true,
+        "partial": false,
+        "results": [
+          {
+            "provider": "jira",
+            "success": true,
+            "externalUrl": "https://acme-cloud.atlassian.net/browse/PROJ-223"
+          }
+        ]
+      },
+      "createdAt": "2026-10-01T15:54:54.309Z"
+    },
+    {
+      "id": "aud-1790870094310-kbii6",
+      "workspaceId": "ws-acme-cloud",
+      "actorId": "usr-sarah-chen",
+      "actorName": "Sarah Chen",
+      "action": "action.execute",
+      "entityType": "action_item",
+      "entityId": "test-act-idem-1790870094307",
+      "safeMetadata": {
+        "destinations": [
+          "jira"
+        ],
+        "success": true,
+        "partial": false,
+        "results": [
+          {
+            "provider": "jira",
+            "success": true,
+            "externalUrl": "https://acme-cloud.atlassian.net/browse/PROJ-223"
+          }
+        ]
+      },
+      "createdAt": "2026-10-01T15:54:54.310Z"
+    },
+    {
+      "id": "aud-1790870094313-56jju",
+      "workspaceId": "ws-acme-cloud",
+      "actorId": "usr-sarah-chen",
+      "actorName": "Sarah Chen",
+      "action": "action.execute",
+      "entityType": "action_item",
+      "entityId": "test-act-dual-1790870094310",
+      "safeMetadata": {
+        "destinations": [
+          "jira",
+          "notion"
+        ],
+        "success": true,
+        "partial": false,
+        "results": [
+          {
+            "provider": "jira",
+            "success": true,
+            "externalUrl": "https://acme-cloud.atlassian.net/browse/PROJ-414"
+          },
+          {
+            "provider": "notion",
+            "success": true,
+            "externalUrl": "https://notion.so/acme-workspace/jpw4dihf"
+          }
+        ]
+      },
+      "createdAt": "2026-10-01T15:54:54.313Z"
+    }
+  ]
+}

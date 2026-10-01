@@ -1,0 +1,103 @@
+{
+  "name": "MeetingMind - Workflow A: Meeting Processing Event",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "meeting-processing-event",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "name": "Webhook Inbound",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [180, 240]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$node[\"Webhook Inbound\"].json[\"headers\"][\"x-meetingmind-secret\"]}}",
+              "value2": "n8n-shared-secret"
+            }
+          ]
+        }
+      },
+      "name": "Validate Secret Signature",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [400, 240]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "meetingId",
+              "value": "={{$node[\"Webhook Inbound\"].json[\"body\"][\"meetingId\"]}}"
+            },
+            {
+              "name": "meetingTitle",
+              "value": "={{$node[\"Webhook Inbound\"].json[\"body\"][\"meetingTitle\"]}}"
+            },
+            {
+              "name": "actionItemsCount",
+              "value": "={{$node[\"Webhook Inbound\"].json[\"body\"][\"actionItemsCount\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Extract Event Data",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [620, 220]
+    },
+    {
+      "parameters": {
+        "channel": "#eng-announcements",
+        "text": "=📝 *Meeting Ready for Review: {{$node[\"Extract Event Data\"].json[\"meetingTitle\"]}}*\n{{$node[\"Extract Event Data\"].json[\"actionItemsCount\"]}} proposed action items are awaiting human review and approval."
+      },
+      "name": "Slack Notification",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 1,
+      "position": [840, 220]
+    }
+  ],
+  "connections": {
+    "Webhook Inbound": {
+      "main": [
+        [
+          {
+            "node": "Validate Secret Signature",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate Secret Signature": {
+      "main": [
+        [
+          {
+            "node": "Extract Event Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Event Data": {
+      "main": [
+        [
+          {
+            "node": "Slack Notification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

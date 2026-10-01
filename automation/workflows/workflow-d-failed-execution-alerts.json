@@ -1,0 +1,40 @@
+{
+  "name": "MeetingMind - Workflow D: Failed Execution Alerts",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "failed-execution-alerts",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "name": "Webhook Inbound",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [180, 240]
+    },
+    {
+      "parameters": {
+        "channel": "#eng-alerts",
+        "text": "=🚨 *MeetingMind Execution Failure Alert*\n*Task ID:* {{$node[\"Webhook Inbound\"].json[\"body\"][\"actionId\"]}}\n*Provider:* {{$node[\"Webhook Inbound\"].json[\"body\"][\"provider\"]}}\n*Error:* {{$node[\"Webhook Inbound\"].json[\"body\"][\"errorMessage\"]}}\nPlease inspect the execution history and retry."
+      },
+      "name": "Send Alert",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 1,
+      "position": [420, 240]
+    }
+  ],
+  "connections": {
+    "Webhook Inbound": {
+      "main": [
+        [
+          {
+            "node": "Send Alert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

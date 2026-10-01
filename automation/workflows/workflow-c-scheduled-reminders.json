@@ -1,0 +1,66 @@
+{
+  "name": "MeetingMind - Workflow C: Scheduled Reminders",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 9 * * *"
+            }
+          ]
+        }
+      },
+      "name": "Cron Daily 9AM",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [180, 240]
+    },
+    {
+      "parameters": {
+        "requestMethod": "GET",
+        "url": "http://localhost:3000/api/v1/dashboard/upcoming-deadlines",
+        "options": {}
+      },
+      "name": "Fetch Upcoming Deadlines",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [400, 240]
+    },
+    {
+      "parameters": {
+        "channel": "#eng-standup",
+        "text": "=⏰ *Daily Action Item Reminders*\nFound {{$node[\"Fetch Upcoming Deadlines\"].json[\"deadlines\"].length}} tasks with approaching deadlines this week."
+      },
+      "name": "Post Digest to Slack",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 1,
+      "position": [640, 240]
+    }
+  ],
+  "connections": {
+    "Cron Daily 9AM": {
+      "main": [
+        [
+          {
+            "node": "Fetch Upcoming Deadlines",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Upcoming Deadlines": {
+      "main": [
+        [
+          {
+            "node": "Post Digest to Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

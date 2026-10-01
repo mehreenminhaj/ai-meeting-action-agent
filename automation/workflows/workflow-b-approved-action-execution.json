@@ -1,0 +1,92 @@
+{
+  "name": "MeetingMind - Workflow B: Approved Action Execution",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "approved-action-execution",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "name": "Webhook Inbound",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [180, 240]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$node[\"Webhook Inbound\"].json[\"headers\"][\"x-meetingmind-secret\"]}}",
+              "value2": "n8n-shared-secret"
+            }
+          ]
+        }
+      },
+      "name": "Verify Secret",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [380, 240]
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "http://localhost:3000/api/v1/automation/webhooks/incoming",
+        "options": {},
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "event",
+              "value": "n8n.execution_callback"
+            },
+            {
+              "name": "actionId",
+              "value": "={{$node[\"Webhook Inbound\"].json[\"body\"][\"actionId\"]}}"
+            },
+            {
+              "name": "status",
+              "value": "acknowledged"
+            }
+          ]
+        },
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "X-MeetingMind-Secret",
+              "value": "n8n-shared-secret"
+            }
+          ]
+        }
+      },
+      "name": "Report Status to Backend",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [620, 220]
+    }
+  ],
+  "connections": {
+    "Webhook Inbound": {
+      "main": [
+        [
+          {
+            "node": "Verify Secret",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verify Secret": {
+      "main": [
+        [
+          {
+            "node": "Report Status to Backend",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "MeetingMind AI",
+  "description": "Production agentic AI system transforming meeting transcripts into structured decisions, verified action items, and automated Jira and Notion tasks with human-in-the-loop review.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
