@@ -145,8 +145,3 @@ Asserts:
 - Idempotency & duplicate prevention
 - Dual destination resilience (Jira + Notion)
 
----
-
-## 7. License
-
-MIT &bull; MeetingMind AI Enterprise Systems
